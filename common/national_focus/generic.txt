@@ -1,0 +1,1281 @@
+focus_tree = {
+  id = SPF_generic_focus
+  country = { factor = 1 }
+  default = yes
+  reset_on_civilwar = no
+
+  ########################
+  # Industry
+  ########################
+
+  focus = {
+    id = SGF_foreign_investors
+    icon = GFX_focus_generic_industry_1
+    cost = 10
+    x = 4
+    y = 0
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 0.5
+        uses = 1
+        category = industry
+      }
+      add_offsite_building = {
+        type = industrial_complex
+        level = 1
+      }
+      add_offsite_building = {
+        type = arms_factory
+        level = 1
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_local_investments
+    icon = GFX_focus_generic_industry_2
+    x = 4
+    y = 1
+    cost = 10
+    prerequisite = { focus = SGF_foreign_investors }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = electronics
+      }
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = industry
+      }
+      add_offsite_building = {
+        type = industrial_complex
+        level = 1
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_military_industrial_complex
+    icon = GFX_focus_generic_combined_arms
+    x = 1
+    y = 2
+    prerequisite = { focus = SGF_local_investments }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = infantry_weapons
+        category = artillery
+      }
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = armor
+      }
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = light_fighter
+        category = tactical_bomber
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_support_small_arms_manufacturers
+    icon = GFX_goal_generic_small_arms
+    x = 1
+    y = 3
+    prerequisite = { focus = SGF_military_industrial_complex }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 2
+        category = infantry_weapons
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_support_tank_developers
+    icon = GFX_focus_generic_tank_production
+    x = 0
+    y = 4
+    prerequisite = { focus = SGF_military_industrial_complex }
+    mutually_exclusive = { focus = SGF_support_aircraft_industry }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 2
+        uses = 1
+        ahead_reduction = 2
+        category = armor
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_support_aircraft_industry
+    icon = GFX_focus_generic_aircraft_production
+    x = 2
+    y = 4
+    prerequisite = { focus = SGF_military_industrial_complex }
+    mutually_exclusive = { focus = SGF_support_tank_developers }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 2
+        uses = 1
+        ahead_reduction = 2
+        category = light_fighter
+        category = tactical_bomber
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_scientific_organizations
+    icon = GFX_focus_research
+    x = 3
+    y = 2
+    prerequisite = { focus = SGF_local_investments }
+    cost = 10
+    completion_reward = {
+      if = {
+				limit = { original_research_slots < 3 }
+				add_research_slot = 1
+        add_ideas = { SGF_scientific_1 }
+			}
+      if = {
+        limit = { original_research_slots > 2 }
+        add_ideas = { SGF_scientific_2 }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_sign_with_arms_manufacturers
+    icon = GFX_goal_generic_construct_mil_factory
+    x = 5
+    y = 2
+    prerequisite = { focus = SGF_local_investments }
+    cost = 10
+    completion_reward = {
+      add_offsite_building = {
+        type = arms_factory
+        level = 3
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_national_steelworks
+    icon = GFX_focus_generic_steel
+    x = 7
+    y = 2
+    prerequisite = { focus = SGF_local_investments }
+    cost = 10
+    completion_reward = {
+      random_owned_controlled_state = {
+        add_resource = {
+          type = steel
+          amount = 20
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_invest_in_aluminum
+    icon = GFX_focus_generic_aluminum
+    x = 6
+    y = 3
+    prerequisite = { focus = SGF_national_steelworks }
+    mutually_exclusive = { focus = SGF_invest_in_tungsten }
+    cost = 10
+    completion_reward = {
+      random_owned_controlled_state = {
+        add_resource = {
+          type = aluminium
+          amount = 12
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_invest_in_tungsten
+    icon = GFX_focus_generic_tungsten
+    x = 8
+    y = 3
+    prerequisite = { focus = SGF_national_steelworks }
+    mutually_exclusive = { focus = SGF_invest_in_aluminum }
+    cost = 10
+    completion_reward = {
+      random_owned_controlled_state = {
+        add_resource = {
+          type = tungsten
+          amount = 12
+        }
+      }
+    }
+  }
+
+  focus ={
+    id = SGF_scrape_for_oil
+    icon = GFX_goal_generic_oil_refinery
+    x = 7
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_invest_in_aluminum
+      focus = SGF_invest_in_tungsten
+    }
+    completion_reward = {
+      random_owned_controlled_state = {
+        add_resource = {
+          type = oil
+          amount = 4
+        }
+        add_resource = {
+          type = rubber
+          amount = 6
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_recycle_wastes
+    icon = GFX_goal_generic_trade
+    x = 6
+    y = 5
+    cost = 10
+    prerequisite = { focus = SGF_economic_growth }
+    prerequisite = { focus = SGF_scrape_for_oil }
+    completion_reward = {
+      random_owned_controlled_state = {
+        add_resource = {
+          type = rubber
+          amount = 4
+        }
+        add_resource = {
+          type = steel
+          amount = 4
+        }
+        add_resource = {
+          type = aluminium
+          amount = 4
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_expand_investments
+    icon = GFX_focus_generic_industry_3
+    x = 4
+    y = 3
+    prerequisite = { focus = SGF_local_investments }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 2
+        category = industry
+      }
+      add_offsite_building = {
+        type = industrial_complex
+        level = 2
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_economic_growth
+    icon = GFX_goal_generic_construct_civ_factory
+    x = 5
+    y = 4
+    prerequisite = { focus = SGF_expand_investments }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_economic_growth_idea }
+      add_offsite_building = {
+        type = industrial_complex
+        level = 2
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_scientific_investments
+    icon = GFX_focus_research
+    x = 4
+    y = 5
+    prerequisite = { focus = SGF_expand_investments }
+    cost = 10
+    completion_reward = {
+      add_research_slot = 1
+    }
+  }
+
+  focus = {
+    id = SGF_naval_industries
+    icon = GFX_goal_generic_construct_naval_dockyard
+    x = 6
+    y = 1
+    prerequisite = { focus = SGF_foreign_investors }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 3
+        category = ss_tech
+        category = dd_tech
+        category = cl_tech
+        category = ca_tech
+        category = bc_tech
+        category = bb_tech
+				category = cv_tech
+      }
+    }
+  }
+
+  ########################
+  # Political
+  ########################
+
+  focus = {
+    id = SGF_strengthen_political_bureau
+    icon = GFX_focus_generic_self_management
+    x = 15
+    y = 0
+    cost = 10
+    completion_reward = {
+      add_stability = 0.05
+      add_political_power = 150
+    }
+  }
+
+  focus = {
+    id = SGF_secure_current_government
+    icon = GFX_goal_generic_neutrality_focus
+    x = 14
+    y = 1
+    prerequisite = { focus = SGF_strengthen_political_bureau }
+    mutually_exclusive = { focus = SGF_prepare_for_change }
+    cost = 5
+    completion_reward = {
+      add_popularity = {
+        ideology = var:current_party_ideology_group
+        popularity = 0.1
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_prepare_for_change
+    icon = GFX_goal_generic_political_pressure
+    x = 16
+    y = 1
+    prerequisite = { focus = SGF_strengthen_political_bureau }
+    mutually_exclusive = { focus = SGF_secure_current_government }
+    cost = 5
+    completion_reward = {
+      add_popularity = {
+        ideology = var:current_party_ideology_group
+        popularity = -0.1
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_open_the_embassy
+    icon = GFX_goal_generic_intelligence_exchange
+    x = 15
+    y = 2
+    prerequisite = {
+      focus = SGF_secure_current_government
+      focus = SGF_prepare_for_change
+    }
+    cost = 10
+    completion_reward = {
+      add_political_power = 150
+      set_rule = {
+        can_create_factions = yes
+        can_send_volunteers = yes
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_the_peoples_strength
+    icon = GFX_goal_support_communism_shine
+    x = 12
+    y = 3
+    available = {
+      OR = {
+        has_government = communism
+        has_completed_focus = SGF_prepare_for_change
+      }
+    }
+    prerequisite = { focus = SGF_open_the_embassy }
+    mutually_exclusive = {
+      focus = SGF_the_democratic_way
+      focus = SGF_no_compromises
+      focus = SGF_our_own_path
+    }
+    cost = 5
+    completion_reward = {
+      add_ideas = { SGF_communist_spirit }
+    }
+  }
+
+  focus = {
+    id = SGF_revolutionary_committee
+    icon = GFX_focus_generic_support_the_left_right
+    x = 11
+    y = 4
+    available = {
+      has_government = communism
+    }
+    prerequisite = { focus = SGF_the_peoples_strength }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_revolutionary_committee_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_the_democratic_way
+    icon = GFX_goal_support_democracy_shine
+    x = 14
+    y = 3
+    available = {
+      OR = {
+        has_government = democratic
+        has_completed_focus = SGF_prepare_for_change
+      }
+    }
+    prerequisite = { focus = SGF_open_the_embassy }
+    mutually_exclusive = {
+      focus = SGF_no_compromises
+      focus = SGF_the_peoples_strength
+      focus = SGF_our_own_path
+    }
+    cost = 5
+    completion_reward = {
+      add_ideas = { SGF_democratic_spirit }
+    }
+  }
+
+  focus = {
+    id = SGF_women_rights_movement
+    icon = GFX_focus_generic_women_in_military
+    x = 13
+    y = 4
+    available = {
+      OR = {
+        has_government = communism
+        has_government = democratic
+      }
+    }
+    prerequisite = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+    }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_womens_rights }
+      set_rule = {
+        can_generate_female_aces = yes
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_a_fair_government
+    icon = GFX_focus_generic_military_academy
+    x = 15
+    y = 4
+    available = {
+      OR = {
+        has_government = democratic
+        has_government = neutrality
+      }
+    }
+    prerequisite = {
+      focus = SGF_the_democratic_way
+      focus = SGF_our_own_path
+    }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_fair_government_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_our_own_path
+    icon = GFX_focus_generic_monarchy_2
+    x = 16
+    y = 3
+    available = {
+      OR = {
+        has_government = neutrality
+        has_completed_focus = SGF_prepare_for_change
+      }
+    }
+    prerequisite = { focus = SGF_open_the_embassy }
+    mutually_exclusive = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+      focus = SGF_no_compromises
+    }
+    cost = 5
+    completion_reward = {
+      add_ideas = { SGF_neutral_spirit }
+    }
+  }
+
+  focus = {
+    id = SGF_production_nationalization
+    icon = GFX_goal_generic_construction
+    x = 17
+    y = 4
+    available = {
+      OR = {
+        has_government = neutrality
+        has_government = fascism
+      }
+    }
+    prerequisite = {
+      focus = SGF_our_own_path
+      focus = SGF_no_compromises
+    }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_nationalized_production }
+    }
+  }
+
+  focus = {
+    id = SGF_no_compromises
+    icon = GFX_goal_support_fascism
+    x = 18
+    y = 3
+    available = {
+      OR = {
+        has_government = fascism
+        has_completed_focus = SGF_prepare_for_change
+      }
+    }
+    prerequisite = { focus = SGF_open_the_embassy }
+    mutually_exclusive = {
+      focus = SGF_the_democratic_way
+      focus = SGF_the_peoples_strength
+      focus = SGF_our_own_path
+    }
+    cost = 5
+    completion_reward = {
+      add_ideas = { SGF_fascist_spirit }
+    }
+  }
+
+  focus = {
+    id = SGF_war_never_changes
+    icon = GFX_goal_generic_attack_allies
+    x = 19
+    y = 4
+    available = {
+      has_government = fascism
+    }
+    prerequisite = { focus = SGF_no_compromises }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_war_never_changes_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_together_for_victory
+    icon = GFX_goal_generic_national_unity
+    x = 12
+    y = 5
+    available = {
+      is_in_faction = yes
+    }
+    prerequisite = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+      focus = SGF_our_own_path
+      focus = SGF_no_compromises
+    }
+    cost = 10
+    completion_reward = {
+      add_stability = 0.1
+      add_war_support = 0.1
+    }
+  }
+
+  focus = {
+    id = SGF_international_scientific_committee
+    icon = GFX_goal_generic_scientific_exchange
+    x = 11
+    y = 6
+    available = {
+      is_in_faction = yes
+    }
+    prerequisite = { focus = SGF_scientific_investments }
+    prerequisite = { focus = SGF_together_for_victory }
+    cost = 10
+    completion_reward = {
+      add_research_slot = 1
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = industry
+        category = electronics
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_nationwide_propaganda
+    icon = GFX_goal_generic_propaganda
+    x = 14
+    y = 5
+    available = {
+      OR = {
+        AND = {
+          has_government = democratic
+          democratic > 0.8
+        }
+        AND = {
+          has_government = communism
+          communism > 0.8
+        }
+        AND = {
+          has_government = fascism
+          fascism > 0.8
+        }
+        AND = {
+          has_government = neutrality
+          neutrality > 0.8
+        }
+      }
+    }
+    prerequisite = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+      focus = SGF_our_own_path
+      focus = SGF_no_compromises
+    }
+    cost = 10
+    completion_reward = {
+      add_stability = 0.1
+      add_political_power = 200
+    }
+  }
+
+  focus = {
+    id = SGF_dig_stocks_from_the_great_war
+    icon = GFX_goal_generic_military_sphere
+    x = 16
+    y = 5
+    available = {
+      has_war = yes
+    }
+    prerequisite = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+      focus = SGF_our_own_path
+      focus = SGF_no_compromises
+    }
+    cost = 10
+    completion_reward = {
+      if = {
+        limit = {
+          NOT = { has_war_with = FRA }
+        }
+        add_equipment_to_stockpile = {
+          type = infantry_equipment_0
+          amount = 1000
+          producer = FRA
+        }
+        add_equipment_to_stockpile = {
+          type = artillery_equipment_1
+          amount = 150
+          producer = FRA
+        }
+        add_equipment_to_stockpile = {
+          type = support_equipment
+          amount = 100
+          producer = FRA
+        }
+      }
+      if = {
+        limit = {
+          NOT = { has_war_with = ENG }
+        }
+        add_equipment_to_stockpile = {
+          type = infantry_equipment_0
+          amount = 500
+          producer = ENG
+        }
+        add_equipment_to_stockpile = {
+          type = fighter_equipment_0
+          amount = 50
+          producer = ENG
+        }
+        add_equipment_to_stockpile = {
+          type = tac_bomber_equipment_0
+          amount = 20
+          producer = ENG
+        }
+      }
+      if = {
+        limit = {
+          NOT = { has_war_with = SOV }
+        }
+        add_equipment_to_stockpile = {
+          type = infantry_equipment_0
+          amount = 2000
+          producer = SOV
+        }
+      }
+      if = {
+        limit = {
+          NOT = { has_war_with = GER }
+        }
+        add_equipment_to_stockpile = {
+          type = infantry_equipment_0
+          amount = 500
+          producer = GER
+        }
+        add_equipment_to_stockpile = {
+          type = support_equipment
+          amount = 200
+          producer = GER
+        }
+        add_equipment_to_stockpile = {
+          type = fighter_equipment_0
+          amount = 20
+          producer = GER
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_our_great_homeland
+    icon = GFX_goal_generic_territory_or_war
+    x = 18
+    y = 5
+    available = {
+      threat > 0.49
+    }
+    prerequisite = {
+      focus = SGF_the_peoples_strength
+      focus = SGF_the_democratic_way
+      focus = SGF_our_own_path
+      focus = SGF_no_compromises
+    }
+    cost = 10
+    completion_reward = {
+      add_ideas = { SGF_our_great_homeland_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_local_military_innovations
+    icon = GFX_goal_generic_air_production
+    x = 21
+    y = 6
+    cost = 10
+    prerequisite = { focus = SGF_our_great_homeland }
+    prerequisite = {
+      focus = SGF_improve_infantry_equipment
+      focus = SGF_armored_improvements
+    }
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_our_great_homeland_idea
+        add_idea = SGF_our_great_homeland_idea_2
+      }
+    }
+  }
+
+  ########################
+  # Army
+  ########################
+
+  focus = {
+    id = SGF_organize_high_command
+    icon = GFX_focus_generic_military_mission
+    x = 28
+    y = 0
+    cost = 10
+    completion_reward = {
+      army_experience = 25
+      navy_experience = 25
+      air_experience = 25
+    }
+  }
+
+  focus = {
+    id = SGF_war_games
+    icon = GFX_goal_generic_air_doctrine
+    x = 26
+    y = 1
+    cost = 10
+    prerequisite = { focus = SGF_organize_high_command }
+    completion_reward = {
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.5
+        uses = 1
+        category = land_doctrine
+      }
+      add_ideas = { SGF_war_games_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_motorize_the_army
+    icon = GFX_goal_generic_army_motorized
+    x = 25
+    y = 2
+    cost = 10
+    prerequisite = { focus = SGF_war_games }
+    completion_reward = {
+      army_experience = 10
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = motorized_equipment
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_fund_military_school
+    icon = GFX_focus_generic_little_entente
+    x = 26
+    y = 3
+    cost = 10
+    prerequisite = { focus = SGF_war_games }
+    mutually_exclusive = {
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    completion_reward = {
+      army_experience = 50
+      every_army_leader = {
+        add_defense = 1
+      }
+      swap_ideas = {
+        remove_idea = SGF_war_games_idea
+        add_idea = SGF_war_games_idea_2
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_work_on_those_cannons
+    icon = GFX_goal_generic_army_artillery2
+    x = 26
+    y = 5
+    cost = 10
+    prerequisite = { focus = SGF_fund_military_school }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 2
+        uses = 1
+        ahead_reduction = 2
+        category = artillery
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_airland_battle
+    icon = GFX_goal_generic_more_territorial_claims
+    x = 27
+    y = 2
+    cost = 10
+    prerequisite = { focus = SGF_war_games }
+    prerequisite = { focus = SGF_air_drills }
+    completion_reward = {
+      army_experience = 10
+      air_experience = 10
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.25
+        uses = 1
+        category = land_doctrine
+      }
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.25
+        uses = 1
+        category = air_doctrine
+      }
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = cas_bomber
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_air_drills
+    icon = GFX_goal_generic_build_airforce
+    x = 28
+    y = 1
+    cost = 10
+    prerequisite = { focus = SGF_organize_high_command }
+    completion_reward = {
+      add_ideas = { SGF_air_drills_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_aeronautical_warfare
+    icon = GFX_goal_generic_navy_carrier
+    x = 29
+    y = 2
+    cost = 10
+    prerequisite = { focus = SGF_air_drills }
+    prerequisite = { focus = SGF_naval_simulations }
+    completion_reward = {
+      navy_experience = 10
+      air_experience = 10
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.25
+        uses = 1
+        category = naval_doctrine
+      }
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.25
+        uses = 1
+        category = air_doctrine
+      }
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        category = naval_bomber
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_fund_pilot_school
+    icon = GFX_focus_eng_special_air_service
+    x = 28
+    y = 3
+    cost = 10
+    prerequisite = { focus = SGF_air_drills }
+    mutually_exclusive = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_marine_school
+    }
+    completion_reward = {
+      air_experience = 50
+      swap_ideas = {
+        remove_idea = SGF_air_drills_idea
+        add_idea = SGF_air_drills_idea_2
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_naval_simulations
+    icon = GFX_goal_generic_navy_doctrines_tactics
+    x = 30
+    y = 1
+    cost = 10
+    prerequisite = { focus = SGF_organize_high_command }
+    completion_reward = {
+      add_ideas = { SGF_naval_simulations_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_fund_marine_school
+    icon = GFX_goal_generic_occupy_states_coastal
+    x = 30
+    y = 3
+    cost = 10
+    prerequisite = { focus = SGF_naval_simulations }
+    mutually_exclusive = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+    }
+    completion_reward = {
+      navy_experience = 50
+      swap_ideas = {
+        remove_idea = SGF_naval_simulations_idea
+        add_idea = SGF_naval_simulations_idea_2
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_hunt_or_be_hunted
+    icon = GFX_goal_generic_navy_submarine
+    x = 30
+    y = 5
+    cost = 10
+    prerequisite = { focus = SGF_fund_marine_school }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 2
+        uses = 1
+        ahead_reduction = 2
+        category = ss_tech
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_improve_infantry_equipment
+    icon = GFX_goal_generic_construction2
+    x = 23
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_armored_improvements }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = infantry_weapons
+        category = support_tech
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_armored_improvements
+    icon = GFX_goal_generic_army_tanks
+    x = 25
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_improve_infantry_equipment }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = armor
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_we_will_rule_the_land
+    icon = GFX_goal_generic_build_tank
+    x = 24
+    y = 6
+    cost = 10
+    available = {
+      has_completed_focus = SGF_war_games
+    }
+    prerequisite = {
+      focus = SGF_improve_infantry_equipment
+      focus = SGF_armored_improvements
+    }
+    mutually_exclusive = {
+      focus = SGF_we_will_rule_the_sky
+      focus = SGF_we_will_rule_the_waves
+    }
+    completion_reward = {
+      army_experience = 50
+      if = {
+        limit = { has_idea = SGF_war_games_idea_2 }
+        swap_ideas = {
+          remove_idea = SGF_war_games_idea_2
+          add_idea = SGF_war_games_idea_4
+        }
+      } else = {
+        swap_ideas = {
+          remove_idea = SGF_war_games_idea
+          add_idea = SGF_war_games_idea_3
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_fighter_innovations
+    icon = GFX_goal_generic_air_fighter
+    x = 27
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_bomber_innovations }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = light_fighter
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_bomber_innovations
+    icon = GFX_goal_generic_air_bomber
+    x = 29
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_fighter_innovations }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = tactical_bomber
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_we_will_rule_the_sky
+    icon = GFX_focus_generic_air_defense
+    x = 28
+    y = 6
+    cost = 10
+    available = {
+      has_completed_focus = SGF_air_drills
+    }
+    prerequisite = {
+      focus = SGF_fighter_innovations
+      focus = SGF_bomber_innovations
+    }
+    mutually_exclusive = {
+      focus = SGF_we_will_rule_the_land
+      focus = SGF_we_will_rule_the_waves
+    }
+    completion_reward = {
+      air_experience = 50
+      if = {
+        limit = { has_idea = SGF_air_drills_idea_2 }
+        swap_ideas = {
+          remove_idea = SGF_air_drills_idea_2
+          add_idea = SGF_air_drills_idea_4
+        }
+      } else = {
+        swap_ideas = {
+          remove_idea = SGF_air_drills_idea
+          add_idea = SGF_air_drills_idea_3
+        }
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_naval_screening
+    icon = GFX_goal_generic_navy_cruiser
+    x = 31
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_decisive_naval_gear }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = dd_tech
+        category = cl_tech
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_decisive_naval_gear
+    icon = GFX_goal_generic_navy_battleship
+    x = 33
+    y = 4
+    cost = 10
+    prerequisite = {
+      focus = SGF_fund_military_school
+      focus = SGF_fund_pilot_school
+      focus = SGF_fund_marine_school
+    }
+    mutually_exclusive = { focus = SGF_naval_screening }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 1
+        category = bb_tech
+        category = bc_tech
+        category = cv_tech
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_we_will_rule_the_waves
+    icon = GFX_goal_generic_build_navy
+    x = 32
+    y = 6
+    cost = 10
+    available = {
+      has_completed_focus = SGF_naval_simulations
+    }
+    prerequisite = {
+      focus = SGF_naval_screening
+      focus = SGF_decisive_naval_gear
+    }
+    mutually_exclusive = {
+      focus = SGF_we_will_rule_the_land
+      focus = SGF_we_will_rule_the_sky
+    }
+    completion_reward = {
+      navy_experience = 50
+      if = {
+        limit = { has_idea = SGF_naval_simulations_idea_2 }
+        swap_ideas = {
+          remove_idea = SGF_naval_simulations_idea_2
+          add_idea = SGF_naval_simulations_idea_4
+        }
+      } else = {
+        swap_ideas = {
+          remove_idea = SGF_naval_simulations_idea
+          add_idea = SGF_naval_simulations_idea_3
+        }
+      }
+    }
+  }
+}

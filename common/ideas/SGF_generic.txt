@@ -1,0 +1,304 @@
+ideas = {
+	country = {
+		SGF_scientific_1 = {
+      picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.02
+			}
+		}
+
+		SGF_scientific_2 = {
+      picture = generic_research_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				research_speed_factor = 0.05
+			}
+		}
+
+    SGF_economic_growth_idea = {
+      picture = generic_economic_increase
+      allowed = { always = no }
+			removal_cost = -1
+      modifier = {
+        stability_factor = 0.1
+        consumer_goods_factor = -0.05
+      }
+    }
+
+		SGF_communist_spirit = {
+      picture = generic_communism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				communism_drift = 0.05
+			}
+		}
+
+		SGF_democratic_spirit = {
+      picture = generic_democratic_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				democratic_drift = 0.05
+			}
+		}
+
+		SGF_neutral_spirit = {
+      picture = generic_neutrality_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				neutrality_drift = 0.05
+			}
+		}
+
+		SGF_fascist_spirit = {
+      picture = generic_fascism_drift_bonus
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				fascism_drift = 0.05
+			}
+		}
+
+		SGF_revolutionary_committee_idea = {
+      picture = generic_communist_army
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				conscription_factor = 0.1
+				drift_defence_factor = 0.25
+			}
+		}
+
+		SGF_womens_rights = {
+      picture = generic_victors_of_ww1
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				conscription = 0.025
+			}
+		}
+
+		SGF_fair_government_idea = {
+      picture = generic_army_war_college
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+				stability_factor = 0.1
+				political_power_gain = 0.2
+			}
+		}
+
+		SGF_nationalized_production = {
+      picture = man_five_year_plan_industry
+			allowed = { always = no }
+			removal_cost = -1
+			modifier = {
+        production_speed_buildings_factor = 0.1
+        industrial_capacity_factory = 0.1
+      }
+		}
+
+    SGF_war_never_changes_idea = {
+      picture = generic_oppression
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        war_support_factor = 0.1
+        war_stability_factor = 0.1
+        conscription = 0.05
+      }
+    }
+
+    SGF_our_great_homeland_idea = {
+      picture = FRA_national_mobilization_focus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        army_core_attack_factor = 0.1
+        army_core_defence_factor = 0.1
+        resistance_growth_on_our_occupied_states = 0.05
+        resistance_target_on_our_occupied_states = 0.05
+      }
+    }
+
+    SGF_our_great_homeland_idea_2 = {
+      picture = FRA_national_mobilization_focus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        army_core_attack_factor = 0.1
+        army_core_defence_factor = 0.1
+        resistance_growth_on_our_occupied_states = 0.05
+        resistance_target_on_our_occupied_states = 0.05
+        equipment_upgrade_xp_cost = -0.1
+        attrition = -0.1
+        state_production_speed_bunker_factor = 0.25
+        state_production_speed_coastal_bunker_factor = 0.25
+      }
+    }
+
+    SGF_war_games_idea = {
+      picture = generic_acquire_tanks
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        max_planning = 0.1
+        planning_speed = 0.1
+        experience_gain_army = 0.05
+      }
+    }
+
+    SGF_war_games_idea_2 = {
+      picture = generic_acquire_tanks
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        max_planning = 0.1
+        planning_speed = 0.1
+        max_dig_in = 5
+        army_leader_start_defense_level = 1
+        experience_gain_army = 0.1
+      }
+    }
+
+    SGF_war_games_idea_3 = {
+      picture = generic_acquire_tanks
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        max_planning = 0.2
+        planning_speed = 0.2
+        max_dig_in = 5
+        army_leader_start_attack_level = 1
+        experience_gain_army = 0.05
+      }
+    }
+
+    SGF_war_games_idea_4 = {
+      picture = generic_acquire_tanks
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        max_planning = 0.2
+        planning_speed = 0.2
+        max_dig_in = 10
+        army_leader_start_attack_level = 1
+        army_leader_start_defense_level = 1
+        experience_gain_army = 0.1
+      }
+    }
+
+    SGF_air_drills_idea = {
+      picture = generic_air_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        air_accidents_factor = -0.1
+        air_agility_factor = 0.05
+        experience_gain_air = 0.05
+      }
+    }
+
+    SGF_air_drills_idea_2 = {
+      picture = generic_air_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        air_accidents_factor = -0.1
+        air_agility_factor = 0.1
+        air_defence_factor = 0.05
+        air_ace_generation_chance_factor = 0.1
+        experience_gain_air = 0.1
+      }
+    }
+
+    SGF_air_drills_idea_3 = {
+      picture = generic_air_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        air_accidents_factor = -0.1
+        air_agility_factor = 0.05
+        air_attack_factor = 0.05
+        air_ace_generation_chance_factor = 0.1
+        air_superiority_bonus_in_combat = 0.1
+        experience_gain_air = 0.05
+      }
+    }
+
+    SGF_air_drills_idea_4 = {
+      picture = generic_air_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        air_accidents_factor = -0.1
+        air_agility_factor = 0.1
+        air_attack_factor = 0.05
+        air_defence_factor = 0.05
+        air_ace_generation_chance_factor = 0.2
+        air_superiority_bonus_in_combat = 0.1
+        experience_gain_air = 0.1
+      }
+    }
+
+    SGF_naval_simulations_idea = {
+      picture = generic_navy_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        naval_accidents_chance = -0.1
+        naval_detection = 0.1
+        experience_gain_navy = 0.05
+      }
+    }
+
+    SGF_naval_simulations_idea_2 = {
+      picture = generic_navy_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        naval_accidents_chance = -0.2
+        naval_detection = 0.1
+        naval_coordination = 0.25
+        naval_defense_factor = 0.1
+        experience_gain_navy = 0.1
+      }
+    }
+
+    SGF_naval_simulations_idea_3 = {
+      picture = generic_navy_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        naval_accidents_chance = -0.1
+        naval_detection = 0.1
+        experience_gain_navy = 0.05
+        naval_damage_factor = 0.1
+        naval_hit_chance = 0.1
+        naval_retreat_speed = 0.2
+      }
+    }
+
+    SGF_naval_simulations_idea_4 = {
+      picture = generic_navy_bonus
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        naval_accidents_chance = -0.2
+        naval_detection = 0.1
+        naval_coordination = 0.25
+        naval_defense_factor = 0.1
+        experience_gain_navy = 0.1
+        naval_damage_factor = 0.1
+        naval_hit_chance = 0.1
+        naval_retreat_speed = 0.2
+      }
+    }
+	}
+}
