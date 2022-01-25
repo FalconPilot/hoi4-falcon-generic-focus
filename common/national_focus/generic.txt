@@ -264,12 +264,22 @@ focus_tree = {
           type = rubber
           amount = 4
         }
+      }
+      random_owned_controlled_state = {
         add_resource = {
           type = steel
           amount = 4
         }
+      }
+      random_owned_controlled_state = {
         add_resource = {
           type = aluminium
+          amount = 4
+        }
+      }
+      random_owned_controlled_state = {
+        add_resource = {
+          type = tungsten
           amount = 4
         }
       }
@@ -318,10 +328,53 @@ focus_tree = {
     icon = GFX_focus_research
     x = 4
     y = 5
+    available = {
+      num_of_factories > 29
+    }
     prerequisite = { focus = SGF_expand_investments }
     cost = 10
     completion_reward = {
       add_research_slot = 1
+    }
+  }
+
+  focus = {
+    id = SGF_improved_recycling_methods
+    icon = GFX_goal_generic_consumer_goods
+    x = 5
+    y = 6
+    cost = 10
+    prerequisite = { focus = SGF_scientific_investments }
+    prerequisite = { focus = SGF_recycle_wastes }
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_economic_growth_idea
+        add_idea = SGF_economic_growth_idea_2
+      }
+      random_owned_controlled_state = {
+        add_resource = {
+          type = rubber
+          amount = 4
+        }
+      }
+      random_owned_controlled_state = {
+        add_resource = {
+          type = steel
+          amount = 4
+        }
+      }
+      random_owned_controlled_state = {
+        add_resource = {
+          type = aluminium
+          amount = 4
+        }
+      }
+      random_owned_controlled_state = {
+        add_resource = {
+          type = tungsten
+          amount = 4
+        }
+      }
     }
   }
 
@@ -354,6 +407,9 @@ focus_tree = {
   focus = {
     id = SGF_strengthen_political_bureau
     icon = GFX_focus_generic_self_management
+    ai_will_do = {
+      factor = 100
+    }
     x = 15
     y = 0
     cost = 10
@@ -366,12 +422,16 @@ focus_tree = {
   focus = {
     id = SGF_secure_current_government
     icon = GFX_goal_generic_neutrality_focus
+    ai_will_do = {
+      factor = 80
+    }
     x = 14
     y = 1
     prerequisite = { focus = SGF_strengthen_political_bureau }
     mutually_exclusive = { focus = SGF_prepare_for_change }
     cost = 5
     completion_reward = {
+      add_political_power = 50
       add_popularity = {
         ideology = var:current_party_ideology_group
         popularity = 0.1
@@ -382,12 +442,16 @@ focus_tree = {
   focus = {
     id = SGF_prepare_for_change
     icon = GFX_goal_generic_political_pressure
+    ai_will_do = {
+      factor = 20
+    }
     x = 16
     y = 1
     prerequisite = { focus = SGF_strengthen_political_bureau }
     mutually_exclusive = { focus = SGF_secure_current_government }
     cost = 5
     completion_reward = {
+      add_political_power = 50
       add_popularity = {
         ideology = var:current_party_ideology_group
         popularity = -0.1
@@ -416,7 +480,7 @@ focus_tree = {
 
   focus = {
     id = SGF_the_peoples_strength
-    icon = GFX_goal_support_communism_shine
+    icon = GFX_goal_support_communism
     x = 12
     y = 3
     available = {
@@ -453,8 +517,26 @@ focus_tree = {
   }
 
   focus = {
+    id = SGF_for_the_motherland
+    icon = GFX_goal_generic_war_with_comintern
+    x = 10
+    y = 5
+    available = {
+      has_government = communism
+    }
+    prerequisite = { focus = SGF_revolutionary_committee }
+    cost = 10
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_revolutionary_committee_idea
+        add_idea = SGF_revolutionary_committee_idea_2
+      }
+    }
+  }
+
+  focus = {
     id = SGF_the_democratic_way
-    icon = GFX_goal_support_democracy_shine
+    icon = GFX_goal_support_democracy
     x = 14
     y = 3
     available = {
@@ -500,6 +582,27 @@ focus_tree = {
   }
 
   focus = {
+    id = SGF_expand_womens_rights
+    icon = GFX_focus_SOV_womens_fascist_movement
+    x = 13
+    y = 6
+    available = {
+      OR = {
+        has_government = communism
+        has_government = democratic
+      }
+    }
+    prerequisite = { focus = SGF_women_rights_movement }
+    cost = 10
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_womens_rights
+        add_idea = SGF_womens_rights_2
+      }
+    }
+  }
+
+  focus = {
     id = SGF_a_fair_government
     icon = GFX_focus_generic_military_academy
     x = 15
@@ -517,6 +620,27 @@ focus_tree = {
     cost = 10
     completion_reward = {
       add_ideas = { SGF_fair_government_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_a_revised_constitution
+    icon = GFX_focus_generic_home_defense
+    x = 15
+    y = 6
+    available = {
+      OR = {
+        has_government = democratic
+        has_government = neutrality
+      }
+    }
+    prerequisite = { focus = SGF_a_fair_government }
+    cost = 10
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_fair_government_idea
+        add_idea = SGF_fair_government_idea_2
+      }
     }
   }
 
@@ -565,6 +689,27 @@ focus_tree = {
   }
 
   focus = {
+    id = SGF_coordinate_the_manufacturers
+    icon = GFX_goal_generic_construct_infrastructure
+    x = 17
+    y = 6
+    available = {
+      OR = {
+        has_government = neutrality
+        has_government = fascism
+      }
+    }
+    prerequisite = { focus = SGF_production_nationalization }
+    cost = 10
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_nationalized_production
+        add_idea = SGF_nationalized_production_2
+      }
+    }
+  }
+
+  focus = {
     id = SGF_no_compromises
     icon = GFX_goal_support_fascism
     x = 18
@@ -599,6 +744,24 @@ focus_tree = {
     cost = 10
     completion_reward = {
       add_ideas = { SGF_war_never_changes_idea }
+    }
+  }
+
+  focus = {
+    id = SGF_helldiving
+    icon = GFX_focus_generic_strike_at_democracy1
+    x = 20
+    y = 5
+    available = {
+      has_government = fascism
+    }
+    cost = 10
+    prerequisite = { focus = SGF_war_never_changes }
+    completion_reward = {
+      swap_ideas = {
+        remove_idea = SGF_war_never_changes_idea
+        add_idea = SGF_war_never_changes_idea_2
+      }
     }
   }
 
@@ -848,6 +1011,13 @@ focus_tree = {
   focus = {
     id = SGF_motorize_the_army
     icon = GFX_goal_generic_army_motorized
+    ai_will_do = {
+      factor = 10
+      modifier = {
+        factor = 8
+        has_tech = motorised_infantry
+      }
+    }
     x = 25
     y = 2
     cost = 10
@@ -865,6 +1035,9 @@ focus_tree = {
   focus = {
     id = SGF_fund_military_school
     icon = GFX_focus_generic_little_entente
+    ai_will_do = {
+      factor = 40
+    }
     x = 26
     y = 3
     cost = 10
@@ -975,6 +1148,17 @@ focus_tree = {
   focus = {
     id = SGF_fund_pilot_school
     icon = GFX_focus_eng_special_air_service
+    ai_will_do = {
+      factor = 10
+      modifier = {
+        factor = 4
+        has_deployed_air_force_size = { size > 25 }
+      }
+      modifier = {
+        factor = 2
+        has_deployed_air_force_size = { size > 200 }
+      }
+    }
     x = 28
     y = 3
     cost = 10
@@ -1005,8 +1189,37 @@ focus_tree = {
   }
 
   focus = {
+    id = SGF_modern_radars
+    icon = GFX_goal_generic_radar
+    x = 31
+    y = 2
+    cost = 10
+    prerequisite = { focus = SGF_naval_simulations }
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 0.5
+        uses = 2
+        ahead_reduction = 1
+        category = radar_tech
+      }
+    }
+  }
+
+  focus = {
     id = SGF_fund_marine_school
     icon = GFX_goal_generic_occupy_states_coastal
+    ai_will_do = {
+      factor = 40
+      modifier = {
+        factor = 0
+        NOT = {
+          any_state = {
+            is_owned_by = ROOT
+            is_coastal = yes
+          }
+        }
+      }
+    }
     x = 30
     y = 3
     cost = 10

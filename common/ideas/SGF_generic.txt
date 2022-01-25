@@ -21,10 +21,21 @@ ideas = {
     SGF_economic_growth_idea = {
       picture = generic_economic_increase
       allowed = { always = no }
-			removal_cost = -1
+      removal_cost = -1
       modifier = {
         stability_factor = 0.1
         consumer_goods_factor = -0.05
+      }
+    }
+
+    SGF_economic_growth_idea_2 = {
+      picture = generic_economic_increase
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        stability_factor = 0.1
+        consumer_goods_factor = -0.07
+        local_resources_factor = 0.1
       }
     }
 
@@ -33,7 +44,8 @@ ideas = {
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				communism_drift = 0.05
+				communism_drift = 0.1
+        army_morale_factor = 0.1
 			}
 		}
 
@@ -42,7 +54,8 @@ ideas = {
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				democratic_drift = 0.05
+				democratic_drift = 0.1
+        research_speed_factor = 0.04
 			}
 		}
 
@@ -51,7 +64,8 @@ ideas = {
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				neutrality_drift = 0.05
+				neutrality_drift = 0.1
+        conscription = 0.025
 			}
 		}
 
@@ -60,49 +74,99 @@ ideas = {
 			allowed = { always = no }
 			removal_cost = -1
 			modifier = {
-				fascism_drift = 0.05
+				fascism_drift = 0.1
+        army_speed_factor = 0.05
 			}
 		}
 
-		SGF_revolutionary_committee_idea = {
+    SGF_revolutionary_committee_idea = {
       picture = generic_communist_army
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				conscription_factor = 0.1
-				drift_defence_factor = 0.25
-			}
-		}
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        conscription_factor = 0.1
+        weekly_manpower = 300
+        drift_defence_factor = 0.25
+        army_leader_cost_factor = -0.1
+      }
+    }
 
-		SGF_womens_rights = {
+    SGF_revolutionary_committee_idea_2 = {
+      picture = generic_communist_army
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        conscription = 0.025
+        conscription_factor = 0.1
+        weekly_manpower = 500
+        drift_defence_factor = 0.25
+        army_leader_cost_factor = -0.1
+      }
+    }
+
+    SGF_womens_rights = {
       picture = generic_victors_of_ww1
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				conscription = 0.025
-			}
-		}
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        stability_factor = 0.1
+        conscription = 0.025
+      }
+    }
 
-		SGF_fair_government_idea = {
+    SGF_womens_rights_2 = {
+      picture = generic_victors_of_ww1
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        stability_factor = 0.1
+        conscription = 0.025
+        weekly_manpower = 100
+        political_power_gain = 0.2
+      }
+    }
+
+    SGF_fair_government_idea = {
       picture = generic_army_war_college
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
-				stability_factor = 0.1
-				political_power_gain = 0.2
-			}
-		}
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        stability_factor = 0.1
+        political_power_gain = 0.2
+      }
+    }
 
-		SGF_nationalized_production = {
+    SGF_fair_government_idea_2 = {
+      picture = generic_army_war_college
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        stability_factor = 0.2
+        political_power_gain = 0.3
+        research_speed_factor = 0.05
+      }
+    }
+
+    SGF_nationalized_production = {
       picture = man_five_year_plan_industry
-			allowed = { always = no }
-			removal_cost = -1
-			modifier = {
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
         production_speed_buildings_factor = 0.1
         industrial_capacity_factory = 0.1
       }
-		}
+    }
+
+    SGF_nationalized_production_2 = {
+      picture = man_five_year_plan_industry
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        production_speed_buildings_factor = 0.2
+        industrial_capacity_factory = 0.2
+        local_resources_factor = 0.1
+      }
+    }
 
     SGF_war_never_changes_idea = {
       picture = generic_oppression
@@ -112,6 +176,19 @@ ideas = {
         war_support_factor = 0.1
         war_stability_factor = 0.1
         conscription = 0.05
+      }
+    }
+
+    SGF_war_never_changes_idea_2 = {
+      picture = generic_oppression
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        war_support_factor = 0.1
+        war_stability_factor = 0.2
+        conscription = 0.05
+        justify_war_goal_time = -0.25
+        army_speed_factor = 0.05
       }
     }
 
