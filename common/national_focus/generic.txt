@@ -14,11 +14,15 @@ focus_tree = {
     cost = 10
     x = 4
     y = 0
+    ai_will_do = {
+      factor = 40
+    }
     completion_reward = {
       add_tech_bonus = {
         bonus = 0.5
         uses = 1
         category = industry
+        name = industrial_bonus
       }
       add_offsite_building = {
         type = industrial_complex
@@ -36,6 +40,9 @@ focus_tree = {
     icon = GFX_focus_generic_industry_2
     x = 4
     y = 1
+    ai_will_do = {
+      factor = 40
+    }
     cost = 10
     prerequisite = { focus = SGF_foreign_investors }
     completion_reward = {
@@ -48,6 +55,7 @@ focus_tree = {
         bonus = 1
         uses = 1
         category = industry
+        name = industrial_bonus
       }
       add_offsite_building = {
         type = industrial_complex
@@ -61,6 +69,9 @@ focus_tree = {
     icon = GFX_focus_generic_combined_arms
     x = 1
     y = 2
+    ai_will_do = {
+      factor = 40
+    }
     prerequisite = { focus = SGF_local_investments }
     cost = 10
     completion_reward = {
@@ -69,11 +80,13 @@ focus_tree = {
         uses = 1
         category = infantry_weapons
         category = artillery
+        name = arty_bonus
       }
       add_tech_bonus = {
         bonus = 1
         uses = 1
         category = armor
+        name = armor_bonus
       }
       add_tech_bonus = {
         bonus = 1
@@ -89,6 +102,9 @@ focus_tree = {
     icon = GFX_goal_generic_small_arms
     x = 1
     y = 3
+    ai_will_do = {
+      factor = 40
+    }
     prerequisite = { focus = SGF_military_industrial_complex }
     cost = 10
     completion_reward = {
@@ -115,6 +131,25 @@ focus_tree = {
         uses = 1
         ahead_reduction = 2
         category = armor
+        name = armor_bonus
+      }
+    }
+  }
+
+  focus = {
+    id = SGF_the_future_of_armor
+    icon = GFX_
+    x = 0
+    y = 5
+    prerequisite = { focus = SGF_support_tank_developers }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 2
+        technology = modern_armor
+        name = armor_bonus
       }
     }
   }
@@ -139,10 +174,34 @@ focus_tree = {
   }
 
   focus = {
+    id = SGF_the_future_of_aircrafts
+    icon = GFX_
+    x = 2
+    y = 5
+    prerequisite = { focus = SGF_support_aircraft_industry }
+    cost = 10
+    completion_reward = {
+      add_tech_bonus = {
+        bonus = 1
+        uses = 1
+        ahead_reduction = 2
+        category = jet_technology
+      }
+    }
+  }
+
+  focus = {
     id = SGF_scientific_organizations
     icon = GFX_focus_research
     x = 3
     y = 2
+    ai_will_do = {
+      factor = 40
+      modifier = {
+        factor = 3
+        original_research_slots < 2
+      }
+    }
     prerequisite = { focus = SGF_local_investments }
     cost = 10
     completion_reward = {
@@ -178,6 +237,9 @@ focus_tree = {
     icon = GFX_focus_generic_steel
     x = 7
     y = 2
+    ai_will_do = {
+      factor = 10
+    }
     prerequisite = { focus = SGF_local_investments }
     cost = 10
     completion_reward = {
@@ -195,6 +257,9 @@ focus_tree = {
     icon = GFX_focus_generic_aluminum
     x = 6
     y = 3
+    ai_will_do = {
+      factor = 10
+    }
     prerequisite = { focus = SGF_national_steelworks }
     mutually_exclusive = { focus = SGF_invest_in_tungsten }
     cost = 10
@@ -213,6 +278,9 @@ focus_tree = {
     icon = GFX_focus_generic_tungsten
     x = 8
     y = 3
+    ai_will_do = {
+      factor = 10
+    }
     prerequisite = { focus = SGF_national_steelworks }
     mutually_exclusive = { focus = SGF_invest_in_aluminum }
     cost = 10
@@ -231,6 +299,9 @@ focus_tree = {
     icon = GFX_goal_generic_oil_refinery
     x = 7
     y = 4
+    ai_will_do = {
+      factor = 10
+    }
     cost = 10
     prerequisite = {
       focus = SGF_invest_in_aluminum
@@ -255,6 +326,9 @@ focus_tree = {
     icon = GFX_goal_generic_trade
     x = 6
     y = 5
+    ai_will_do = {
+      factor = 10
+    }
     cost = 10
     prerequisite = { focus = SGF_economic_growth }
     prerequisite = { focus = SGF_scrape_for_oil }
@@ -291,6 +365,9 @@ focus_tree = {
     icon = GFX_focus_generic_industry_3
     x = 4
     y = 3
+    ai_will_do = {
+      factor = 40
+    }
     prerequisite = { focus = SGF_local_investments }
     cost = 10
     completion_reward = {
@@ -299,6 +376,7 @@ focus_tree = {
         uses = 1
         ahead_reduction = 2
         category = industry
+        name = industrial_bonus
       }
       add_offsite_building = {
         type = industrial_complex
@@ -312,6 +390,9 @@ focus_tree = {
     icon = GFX_goal_generic_construct_civ_factory
     x = 5
     y = 4
+    ai_will_do = {
+      factor = 30
+    }
     prerequisite = { focus = SGF_expand_investments }
     cost = 10
     completion_reward = {
@@ -328,6 +409,9 @@ focus_tree = {
     icon = GFX_focus_research
     x = 4
     y = 5
+    ai_will_do = {
+      factor = 60
+    }
     available = {
       num_of_factories > 29
     }
@@ -343,6 +427,9 @@ focus_tree = {
     icon = GFX_goal_generic_consumer_goods
     x = 5
     y = 6
+    ai_will_do = {
+      factor = 10
+    }
     cost = 10
     prerequisite = { focus = SGF_scientific_investments }
     prerequisite = { focus = SGF_recycle_wastes }
@@ -383,6 +470,18 @@ focus_tree = {
     icon = GFX_goal_generic_construct_naval_dockyard
     x = 6
     y = 1
+    ai_will_do = {
+      factor = 30
+      modifier = {
+        factor = 0
+        NOT = {
+          any_state = {
+            is_owned_by = ROOT
+            is_coastal = yes
+          }
+        }
+      }
+    }
     prerequisite = { focus = SGF_foreign_investors }
     cost = 10
     completion_reward = {
@@ -408,7 +507,7 @@ focus_tree = {
     id = SGF_strengthen_political_bureau
     icon = GFX_focus_generic_self_management
     ai_will_do = {
-      factor = 100
+      factor = 120
     }
     x = 15
     y = 0
@@ -444,6 +543,10 @@ focus_tree = {
     icon = GFX_goal_generic_political_pressure
     ai_will_do = {
       factor = 20
+      modifier = {
+        factor = 0
+        is_historical_focus_on = yes
+      }
     }
     x = 16
     y = 1
@@ -804,6 +907,7 @@ focus_tree = {
         uses = 1
         category = industry
         category = electronics
+        name = industrial_bonus
       }
     }
   }
@@ -983,6 +1087,9 @@ focus_tree = {
     icon = GFX_focus_generic_military_mission
     x = 28
     y = 0
+    ai_will_do = {
+      factor = 40
+    }
     cost = 10
     completion_reward = {
       army_experience = 25
@@ -1003,6 +1110,7 @@ focus_tree = {
         cost_reduction = 0.5
         uses = 1
         category = land_doctrine
+        name = land_doc_bonus
       }
       add_ideas = { SGF_war_games_idea }
     }
@@ -1015,7 +1123,9 @@ focus_tree = {
       factor = 10
       modifier = {
         factor = 8
-        has_tech = motorised_infantry
+        NOT = {
+          has_tech = motorised_infantry
+        }
       }
     }
     x = 25
@@ -1048,6 +1158,12 @@ focus_tree = {
     }
     completion_reward = {
       army_experience = 50
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.5
+        uses = 1
+        category = land_doctrine
+        name = land_doc_bonus
+      }
       every_army_leader = {
         add_defense = 1
       }
@@ -1071,6 +1187,7 @@ focus_tree = {
         uses = 1
         ahead_reduction = 2
         category = artillery
+        name = arty_bonus
       }
     }
   }
@@ -1090,6 +1207,7 @@ focus_tree = {
         cost_reduction = 0.25
         uses = 1
         category = land_doctrine
+        name = land_doc_bonus
       }
       add_doctrine_cost_reduction = {
         cost_reduction = 0.25
@@ -1109,6 +1227,17 @@ focus_tree = {
     icon = GFX_goal_generic_build_airforce
     x = 28
     y = 1
+    ai_will_do = {
+      factor = 10
+      modifier = {
+        factor = 4
+        has_deployed_air_force_size = { size > 25 }
+      }
+      modifier = {
+        factor = 2
+        has_deployed_air_force_size = { size > 200 }
+      }
+    }
     cost = 10
     prerequisite = { focus = SGF_organize_high_command }
     completion_reward = {
@@ -1169,6 +1298,11 @@ focus_tree = {
     }
     completion_reward = {
       air_experience = 50
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.5
+        uses = 1
+        category = air_doctrine
+      }
       swap_ideas = {
         remove_idea = SGF_air_drills_idea
         add_idea = SGF_air_drills_idea_2
@@ -1181,6 +1315,18 @@ focus_tree = {
     icon = GFX_goal_generic_navy_doctrines_tactics
     x = 30
     y = 1
+    ai_will_do = {
+      factor = 40
+      modifier = {
+        factor = 0
+        NOT = {
+          any_state = {
+            is_owned_by = ROOT
+            is_coastal = yes
+          }
+        }
+      }
+    }
     cost = 10
     prerequisite = { focus = SGF_organize_high_command }
     completion_reward = {
@@ -1194,7 +1340,10 @@ focus_tree = {
     x = 31
     y = 2
     cost = 10
-    prerequisite = { focus = SGF_naval_simulations }
+    prerequisite = {
+      focus = SGF_air_drills
+      focus = SGF_naval_simulations
+    }
     completion_reward = {
       add_tech_bonus = {
         bonus = 0.5
@@ -1230,6 +1379,11 @@ focus_tree = {
     }
     completion_reward = {
       navy_experience = 50
+      add_doctrine_cost_reduction = {
+        cost_reduction = 0.5
+        uses = 1
+        category = naval_doctrine
+      }
       swap_ideas = {
         remove_idea = SGF_naval_simulations_idea
         add_idea = SGF_naval_simulations_idea_2
@@ -1295,6 +1449,7 @@ focus_tree = {
         uses = 1
         ahead_reduction = 1
         category = armor
+        name = armor_bonus
       }
     }
   }
@@ -1304,6 +1459,9 @@ focus_tree = {
     icon = GFX_goal_generic_build_tank
     x = 24
     y = 6
+    ai_will_do = {
+      factor = 40
+    }
     cost = 10
     available = {
       has_completed_focus = SGF_war_games
@@ -1318,6 +1476,9 @@ focus_tree = {
     }
     completion_reward = {
       army_experience = 50
+      every_army_leader = {
+        add_attack = 1
+      }
       if = {
         limit = { has_idea = SGF_war_games_idea_2 }
         swap_ideas = {
@@ -1382,6 +1543,17 @@ focus_tree = {
     icon = GFX_focus_generic_air_defense
     x = 28
     y = 6
+    ai_will_do = {
+      factor = 10
+      modifier = {
+        factor = 4
+        has_deployed_air_force_size = { size > 25 }
+      }
+      modifier = {
+        factor = 2
+        has_deployed_air_force_size = { size > 200 }
+      }
+    }
     cost = 10
     available = {
       has_completed_focus = SGF_air_drills
@@ -1463,6 +1635,18 @@ focus_tree = {
     icon = GFX_goal_generic_build_navy
     x = 32
     y = 6
+    ai_will_do = {
+      factor = 40
+      modifier = {
+        factor = 0
+        NOT = {
+          any_state = {
+            is_owned_by = ROOT
+            is_coastal = yes
+          }
+        }
+      }
+    }
     cost = 10
     available = {
       has_completed_focus = SGF_naval_simulations
