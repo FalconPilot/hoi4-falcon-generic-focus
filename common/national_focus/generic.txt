@@ -2294,7 +2294,7 @@ focus_tree = {
     id = SGF_muster_guns_for_our_benefactor
     icon = GFX_focus_focus_fra_maquis
     x = 45
-    y = 1
+    y = 10
     available_if_capitulated = yes
     ai_will_do = {
       factor = 800
@@ -2327,7 +2327,7 @@ focus_tree = {
     ai_will_do = {
       factor = 800
     }
-    cost = 1
+    cost = 10
     allow_branch = { has_dlc = "Man the Guns" }
     available = {
       is_government_in_exile = yes
