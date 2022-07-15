@@ -1,0 +1,202 @@
+add_namespace = SGF_generic_referendum
+add_namespace = SGF_generic_nationalism
+add_namespace = SGF_guns_from_the_resistance
+add_namespace = SGF_bite_the_ankles
+
+country_event = {
+  id = SGF_generic_referendum.national_referendum
+  title = SGF_generic_referendum.national_referendum.title
+  desc = SGF_generic_referendum.national_referendum.desc
+  is_triggered_only = yes
+  major = yes
+  picture = GFX_report_event_SOV_national_academy_of_sciences
+
+  option = {
+    name = SGF_generic_referendum.national_referendum.confirm
+    trigger = {
+      tag = FROM
+    }
+    add_country_leader_trait = SGF_elected_fairly
+  }
+
+  option = {
+    name = SGF_generic_referendum.national_referendum.dontcare
+    trigger = {
+      AND = {
+        NOT = { tag = FROM }
+        NOT = { has_government = democratic }
+        NOT = { has_government = fascism }
+      }
+    }
+  }
+
+  option = {
+    name = SGF_generic_referendum.national_referendum.welcome
+    trigger = {
+      AND = {
+        NOT = { tag = FROM }
+        has_government = democratic
+      }
+    }
+  }
+
+  option = {
+    name = SGF_generic_referendum.national_referendum.ohno
+    trigger = {
+      AND = {
+        NOT = { tag = FROM }
+        OR = {
+          has_government = fascism
+          has_elections = no
+        }
+      }
+    }
+  }
+}
+
+country_event = {
+  id = SGF_generic_nationalism.nationalist_pride
+  title = SGF_generic_nationalism.nationalist_pride.title
+  desc = SGF_generic_nationalism.nationalist_pride.desc
+  is_triggered_only = yes
+  major = yes
+  picture = GFX_report_event_worker_protests
+
+  option = {
+    name = SGF_generic_nationalism.nationalist_pride.confirm
+    trigger = {
+      tag = FROM
+    }
+    if = {
+      limit = {
+        any_owned_state = {
+          OR = {
+            is_on_continent = africa
+            is_on_continent = middle_east
+          }
+          is_capital = yes
+        }
+      }
+      add_country_leader_trait = SGF_warlord
+    } else_if = {
+      limit = {
+        any_owned_state = {
+          is_on_continent = south_america
+          is_capital = yes
+        }
+      }
+      add_country_leader_trait = SGF_el_presidente
+    } else_if = {
+      limit = {
+        any_owned_state = {
+          OR = {
+            is_on_continent = north_america
+            is_on_continent = australia
+          }
+          is_capital = yes
+        }
+      }
+      add_country_leader_trait = SGF_veterans_respect
+    } else_if = {
+      limit = {
+        any_owned_state = {
+          is_on_continent = asia
+          is_capital = yes
+        }
+      }
+      add_country_leader_trait = SGF_popular_leader
+    } else = {
+      add_country_leader_trait = SGF_national_hero
+    }
+  }
+
+  option = {
+    name = SGF_generic_nationalism.nationalist_pride.ohno
+    trigger = {
+      AND = {
+        NOT = { tag = FROM }
+        has_government = democratic
+      }
+    }
+  }
+
+  option = {
+    name = SGF_generic_nationalism.nationalist_pride.dontcare
+    trigger = {
+      AND = {
+        NOT = { tag = FROM }
+        NOT = { has_government = democratic }
+      }
+    }
+  }
+}
+
+country_event = {
+  id = SGF_guns_from_the_resistance.main
+  title = SGF_guns_from_the_resistance.title
+  desc = SGF_guns_from_the_resistance.desc
+  is_triggered_only = yes
+  picture = GFX_report_event_british_artillery
+
+  option = {
+    name = SGF_guns_from_the_resistance.accept
+    add_equipment_to_stockpile = {
+      type = infantry_equipment_0
+      amount = 2000
+      producer = FROM
+    }
+    if = {
+      limit = {
+        FROM = { has_tech = tech_support }
+      }
+      add_equipment_to_stockpile = {
+        type = support_equipment
+        amount = 200
+        producer = FROM
+      }
+    }
+    if = {
+      limit = {
+        FROM = { has_tech = gw_artillery }
+      }
+      add_equipment_to_stockpile = {
+        type = artillery_equipment_1
+        amount = 25
+        producer = FROM
+      }
+    }
+    if = {
+      limit = {
+        FROM = { has_tech = early_fighter }
+      }
+      add_equipment_to_stockpile = {
+        type = fighter_equipment_0
+        amount = 20
+        producer = FROM
+      }
+    }
+  }
+}
+
+country_event = {
+  id = SGF_bite_the_ankles.main
+  title = SGF_bite_the_ankles.title
+  desc = SGF_bite_the_ankles.desc
+  is_triggered_only = yes
+  picture = GFX_report_event_dead_soldiers
+
+  option = {
+    name = SGF_bite_the_ankles.accept
+    add_stability = -0.025
+    random_state = {
+      limit = {
+        AND = {
+          is_owned_by = FROM
+          is_controlled_by = ROOT
+        }
+      }
+      add_resistance = 25
+      add_compliance = -10
+    }
+  }
+}

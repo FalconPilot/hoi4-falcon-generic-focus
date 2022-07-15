@@ -377,5 +377,46 @@ ideas = {
         naval_retreat_speed = 0.2
       }
     }
+
+    SGF_foreign_agents_idea = {
+      picture = generic_spy_political
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        own_operative_detection_chance_factor = -0.05
+      }
+    }
+
+    SGF_foreign_agents_idea_2 = {
+      picture = generic_spy_political
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        own_operative_detection_chance_factor = -0.05
+        enemy_operative_detection_chance_factor = 0.05
+        operation_outcome = 0.05
+      }
+    }
+
+    SGF_soviet_techniques = {
+      picture = idea_saf_soviet_advisers
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        operative_slot = 1
+        intelligence_agency_defense = 1
+        foreign_subversive_activites = -0.1
+        operative_death_on_capture_chance = 0.02
+      }
+    }
+
+    SGF_usa_techniques = {
+      picture = idea_generic_usa_conflict
+      allowed = { always = no }
+      removal_cost = -1
+      modifier = {
+        research_speed_factor = 0.05
+      }
+    }
 	}
 }

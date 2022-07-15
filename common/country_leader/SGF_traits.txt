@@ -1,0 +1,38 @@
+leader_traits = {
+  SGF_national_hero = {
+    random = no
+    political_power_gain = 0.1
+    justify_war_goal_time = -0.1
+  }
+
+  SGF_el_presidente = {
+    random = no
+    army_morale_factor = 0.05
+    justify_war_goal_time = -0.1
+  }
+
+  SGF_veterans_respect = {
+    random = no
+    experience_gain_army_unit_factor = 0.1
+    justify_war_goal_time = -0.1
+  }
+
+  SGF_warlord = {
+    random = no
+    supply_consumption_factor = -0.05
+    justify_war_goal_time = -0.1
+  }
+
+  SGF_popular_leader = {
+    random = no
+    terrain_penalty_reduction = 0.05
+    justify_war_goal_time = -0.1
+  }
+
+  SGF_elected_fairly = {
+    random = no
+    political_power_gain = 0.1
+    defensive_war_stability_factor = 0.1
+    enemy_justify_war_goal_time = 0.25
+  }
+}
